@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>página principal</title>
+</head>
+
+<body>
+    <!-- fundo animado -->
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+        <defs>
+            <linearGradient id="bg">
+                <stop offset="0%" style="stop-color:rgba(130, 158, 249, 0.06)"></stop>
+                <stop offset="50%" style="stop-color:rgba(88, 175, 155, 0.6)"></stop>
+                <stop offset="100%" style="stop-color:rgba(115, 209, 72, 0.2)"></stop>
+            </linearGradient>
+            <path id="wave" fill="url(#bg)"
+                d="M-363.852,502.589c0,0,236.988-41.997,505.475,0
+                    s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.995v560.106H-363.852V502.589z" />
+        </defs>
+        <g>
+            <use xlink:href='#wave' opacity=".3">
+                <animateTransform attributeName="transform" attributeType="XML" type="translate" dur="10s"
+                    calcMode="spline" values="270 230; -334 180; 270 230" keyTimes="0; .5; 1"
+                    keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0" repeatCount="indefinite" />
+            </use>
+            <use xlink:href='#wave' opacity=".6">
+                <animateTransform attributeName="transform" attributeType="XML" type="translate" dur="8s"
+                    calcMode="spline" values="-270 230;243 220;-270 230" keyTimes="0; .6; 1"
+                    keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0" repeatCount="indefinite" />
+            </use>
+            <use xlink:href='#wave' opacty=".9">
+                <animateTransform attributeName="transform" attributeType="XML" type="translate" dur="6s"
+                    calcMode="spline" values="0 230;-140 200;0 230" keyTimes="0; .4; 1"
+                    keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0" repeatCount="indefinite" />
+            </use>
+        </g>
+    </svg>
+
+    <nav id="sidebar">
+        <div id="sidebar_content">
+            <div id="user">
+                <img src="../assets/image/user-avatar.png" id="user_avatar" alt="avatar">
+                <p id="user_infos">
+                    <span class="item-description" id="nome-filho">
+                        Felipe
+                    </span>
+                </p>
+            </div>
+
+            <ul id="side_items">
+
+                <li class="side-item active" data-tab="grafico-uso">
+                    <a>
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span class="item-description" id="nome-filho">
+                            Gráfico de uso
+                        </span>
+                    </a>
+                </li>
+
+                <li class="side-item" data-tab="gerenciar-app">
+                    <a>
+                        <i class="fa-solid fa-th"></i>
+                        <span class="item-description">
+                            Gerenciar Aplicativos
+                        </span>
+                    </a>
+                </li>
+
+                <li class="side-item" data-tab="gerenciar-sites">
+                    <a>
+                        <img src="../assets/image/site.png" alt="sites" class="item-description" width="30">
+                        <span class="item-description">
+                            Histórico de Sites
+                        </span>
+                    </a>
+                </li>
+
+                <li class="side-item" data-tab="sites-bloqueados">
+                    <a>
+                        <i class="fa-solid fa-table-cells-row-lock"></i>
+                        <span class="item-description">
+                            Sites Bloqueados
+                        </span>
+                    </a>
+                </li>
+
+                <li class="side-item" data-tab="configuracoes">
+                    <a>
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="item-description">
+                            Configurações
+                        </span>
+                    </a>
+                </li>
+
+                <li class="side-item" data-tab="alternar-filho">
+                    <a>
+                        <i class="fas fa-user"></i>
+                        <span class="item-description">
+                            Alternar Filho
+                        </span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <button id="open_btn">
+                <i id="open-btn-icon" class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div id="logout">
+            <button id="logout_btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="item-description">
+                    Sair da conta
+                </span>
+            </button>
+        </div>
+    </nav>
+    <div class="main-container">
+        <main>
+            <div class="tab-contents">
+                <div class="content show" id="grafico-uso">
+                    <div class="container-dash">
+                        <div class="titulo-b">
+                            <h1 class="h1-t">Resumo Geral</h1>
+                            <button class="btn-relatorio" id="openModal">Gerar Relatório</button>
+                        </div>
+                        <!-- Cartões Resumo -->
+                        <div class="summary-cards">
+                            <div class="card" id="tempo-uso">
+                                <h3>Tempo de Uso (Apps)</h3>
+                                <p>2h 20min</p>
+                            </div>
+                            <div class="card">
+                                <h3>Tempo de Uso (Sites)</h3>
+                                <p>3h 20min</p>
+                            </div>
+                            <div class="card" id="media-diaria">
+                                <h3>Media Diaria</h3>
+                                <p>4h 50min</p>
+                            </div>
+                        </div>
+
+                        <!-- Gráficos -->
+                        <div class="charts-container">
+                            <div class="chart">
+                                <h1>Gráfico de Uso (Aplicativos)</h1>
+                                <canvas id="appUsageChart" height="500px"></canvas>
+                            </div>
+                            <div class="chart">
+                                <h1>Gráfico de Uso (Sites)</h1>
+                                <canvas id="siteUsageChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="tabela-dash" id="tabela-tempo-uso">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Aplicativo/Site</th>
+                                        <th>Tempo de Uso</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Instagram</td>
+                                        <td>1h 30min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>YouTube</td>
+                                        <td>2h 00min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Facebook</td>
+                                        <td>45min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wikipedia</td>
+                                        <td>1h 00min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Steam</td>
+                                        <td>1h 30min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Visual Studio Code</td>
+                                        <td>2h 00min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WhatsApp</td>
+                                        <td>45min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discord</td>
+                                        <td>1h 00min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Steam</td>
+                                        <td>1h 30min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Visual Studio Code</td>
+                                        <td>2h 00min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WhatsApp</td>
+                                        <td>45min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discord</td>
+                                        <td>1h 00min</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content" id="gerenciar-app">
+                    <div class="infos">
+                        <div class="gerenapps">
+                            <h2>Apps em Uso no Momento</h2>
+                            <div class="tabela-app-em-uso">
+                                <table class="tabela-apps-ativos">
+                                    <thead>
+                                        <tr>
+                                            <th>Aplicativo</th>
+                                            <th>Tempo de Uso</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>instagram.com</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook.com</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram.com</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook.com</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram.com</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook.com</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram.com</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook.com</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram.com</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook.com</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram.com</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook.com</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="titulo-gerenciarapps">
+                                <h2>Histórico de Apps</h2>
+                                <div class="data-selecao">
+                                    <label for="data">Selecionar Data:</label>
+                                    <input type="date" id="data" name="data">
+                                </div>
+                            </div>
+                            <div class="tabela-historico-apps">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Aplicativo</th>
+                                            <th>Data</th>
+                                            <th>Hora</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="historico-body">
+                                        <tr>
+                                            <td>instagram</td>
+                                            <td>01/11/24</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook</td>
+                                            <td>01/11/24</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram</td>
+                                            <td>01/11/24</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook</td>
+                                            <td>01/11/24</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram</td>
+                                            <td>01/11/24</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook</td>
+                                            <td>01/11/24</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram</td>
+                                            <td>01/11/24</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook</td>
+                                            <td>01/11/24</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram</td>
+                                            <td>01/11/24</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook</td>
+                                            <td>01/11/24</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram</td>
+                                            <td>01/11/24</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook</td>
+                                            <td>01/11/24</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content" id="gerenciar-sites">
+                    <div class="container-gerenciar-sites">
+                        <div class="h1-historico">
+                            <h1>Histórico de Sites</h1>
+                        </div>
+
+                        <div class="container-data-his">
+                            <div class="tabela">
+                                <table id="tabela-historico">
+                                    <thead>
+                                        <tr>
+                                            <th>Url</th>
+                                            <th>Conteúdo</th>
+                                            <th>Data</th>
+                                            <th>hora</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="limited-text">instagram.com</td>
+                                            <td>Rede Social de Conexões</td>
+                                            <td>12/10/2024</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook.com</td>
+                                            <td>Rede Social de Conexões</td>
+                                            <td>12/10/2024</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>youtube.com</td>
+                                            <td>Plataforma de Vídeos</td>
+                                            <td>12/10/2024</td>
+                                            <td>12:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>twitter.com</td>
+                                            <td>Rede Social de Microblogging</td>
+                                            <td>12/10/2024</td>
+                                            <td>12:45</td>
+                                        </tr>
+                                        <tr>
+                                            <td>linkedin.com</td>
+                                            <td>Rede Social Profissional</td>
+                                            <td>11/10/2024</td>
+                                            <td>09:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>wikipedia.org</td>
+                                            <td>Enciclopédia Livre</td>
+                                            <td>11/10/2024</td>
+                                            <td>14:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>github.com</td>
+                                            <td>Plataforma de Desenvolvimento de Software</td>
+                                            <td>10/10/2024</td>
+                                            <td>08:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>netflix.com</td>
+                                            <td>Serviço de Streaming</td>
+                                            <td>10/10/2024</td>
+                                            <td>20:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>amazon.com</td>
+                                            <td>Marketplace Online</td>
+                                            <td>09/10/2024</td>
+                                            <td>17:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>reddit.com</td>
+                                            <td>Plataforma de Discussão</td>
+                                            <td>09/10/2024</td>
+                                            <td>19:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>instagram.com</td>
+                                            <td>Rede Social de Fotos</td>
+                                            <td>12/10/2024</td>
+                                            <td>10:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>facebook.com</td>
+                                            <td>Rede Social de Conexões</td>
+                                            <td>12/10/2024</td>
+                                            <td>11:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>youtube.com</td>
+                                            <td>Plataforma de Vídeos</td>
+                                            <td>12/10/2024</td>
+                                            <td>12:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>twitter.com</td>
+                                            <td>Rede Social de Microblogging</td>
+                                            <td>12/10/2024</td>
+                                            <td>12:45</td>
+                                        </tr>
+                                        <tr>
+                                            <td>linkedin.com</td>
+                                            <td>Rede Social Profissional</td>
+                                            <td>11/10/2024</td>
+                                            <td>09:30</td>
+                                        </tr>
+                                        <tr>
+                                            <td>wikipedia.org</td>
+                                            <td>Enciclopédia Livre</td>
+                                            <td>11/10/2024</td>
+                                            <td>14:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>github.com</td>
+                                            <td>Plataforma de Desenvolvimento de Software</td>
+                                            <td>10/10/2024</td>
+                                            <td>08:15</td>
+                                        </tr>
+                                        <tr>
+                                            <td>netflix.com</td>
+                                            <td>Serviço de Streaming</td>
+                                            <td>10/10/2024</td>
+                                            <td>20:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>amazon.com</td>
+                                            <td>Marketplace Online</td>
+                                            <td>09/10/2024</td>
+                                            <td>17:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>reddit.com</td>
+                                            <td>Plataforma de Discussão</td>
+                                            <td>09/10/2024</td>
+                                            <td>19:30</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="calendar-container">
+                                <h3>Selecionar Data</h3>
+                                <input type="date" class="date-picker" id="data-historico">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content" id="sites-bloqueados">
+                    <div id="container-sites-bloqueados" class="infos">
+                        <div>
+                            <h2 id="sb-h2">Sites Bloqueados</h2>
+                        </div>
+                        <div class="data-sites-block">
+                            <div class="tabela-sites-block">
+                                <table id="tabela-bloqueados">
+                                    <thead class="header-fixo">
+                                        <tr id="th-sites-block">
+                                            <th></th>
+                                            <th>URL do Site</th>
+                                            <th> </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="sites-block">
+                                        <tr>
+                                            <td>sitesuspeito1.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                                <span class="spinner" style="display:none;"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito2.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito3.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito4.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito5.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito6.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito7.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito8.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito9.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito10.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sitesuspeito11.com</td>
+                                            <td>
+                                                <button class="btn-desblock">
+                                                    <i class="fa-solid fa-unlock-keyhole"></i> Desbloquear
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div class="add-site-form">
+                                <h2>Bloquear site</h2>
+                                <form id="site-form">
+                                    <label for="site-url">URL do site:</label>
+                                    <div class="url-input">
+                                        <span>https://</span>
+                                        <input type="text" id="site-url" name="site-url" placeholder="exemplo.com"
+                                            required>
+                                    </div>
+                                    <div class="button-container">
+                                        <button type="submit" class="btn btn-add">Adicionar</button>
+                                        <button type="button" class="btn btn-cancel">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content" id="configuracoes">
+                    <div class="infos">
+                        <h1 class="content-title">Configurações</h1>
+
+                        <div class="settings-item" id="settings-nome-responsavel">
+                            <div class="icone_text">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <label for="alterar-nome-responsavel">Alterar Nome do Responsável</label>
+                            </div>
+                            <button id="alterar-nome-responsavel" class="btn_alter btn-modal">Alterar</button>
+                        </div>
+
+                        <div class="settings-item" id="settings-nome-filho">
+                            <div class="icone_text">
+                                <i class="fas fa-pencil-alt"></i>
+                                <label for="alterar-nome-filho">Alterar Nome do Filho</label>
+                            </div>
+                            <button id="alterar-nome-filho" class="btn_alter btn-modal">Alterar</button>
+                        </div>
+
+                        <div class="settings-item" id="settings-alterar-senha">
+                            <div class="icone_text">
+                                <i class="fa-solid fa-key"></i>
+                                <label for="alterar-senha">Alterar Senha</label>
+                            </div>
+                            <button id="alterar-senha" class="btn_alter btn-modal">Alterar</button>
+                        </div>
+
+                        <div class="settings-item">
+                            <div class="icone_text">
+                                <i class="fas fa-file-alt"></i>
+                                <label for="toggle-relatorio">Receber Relatório Automaticamente</label>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="toggle-relatorio" class="checkbox-relatorio">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="content" id="alternar-filho">
+                    <div class="infos">
+                        <!-- Aba central da família -->
+                        <div class="container">
+                            <header>
+                                <h1>Sua Família</h1>
+                                <button id="add-member-btn">+ Adicionar membro à família</button>
+                            </header>
+
+                            <!-- Modal para adicionar membro -->
+                            <div class="add-child-card" id="add-child-card">
+                                <h2>Adicione seu filho</h2>
+                                <form id="add-child-form">
+                                    <label for="email">Email do Filho:</label>
+                                    <input type="email" id="email" name="email" placeholder="Digite o email" required>
+                                    <button type="submit">Adicionar</button>
+                                </form>
+                                <button id="close-btn">Cancelar</button>
+                            </div>
+
+                            <!-- Cards dos membros da família -->
+                            <div class="family-members" id="family-members">
+                                <div class="member-card">
+                                    <div class="avatar">🧸</div>
+                                    <h6>Você</h5>
+                                        <p>Família criada em: 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal" id="relatorioModal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModal">&times;</span>
+                        <h2>Gerar Relatório</h2>
+                        <form id="relatorioForm">
+                            <div class="form-group">
+                                <label for="tipoRelatorio">Tipo de Relatório:</label>
+                                <select id="tipoRelatorio" name="tipoRelatorio">
+                                    <option value="mensal">Mensal</option>
+                                    <option value="semanal">Semanal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mesRelatorio">Selecione o Mês:</label>
+                                <input type="month" id="mesRelatorio" name="mesRelatorio" required>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                <span id="loadingSpinner" class="spinner" style="display:none;"></span> Gerar
+                            </button>
+                            <div id="message" style="display:none;"></div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal para Alterar Nome do Responsável -->
+                <div id="modal2-nome-responsavel" class="modal2 modal2-nome-responsavel">
+                    <div class="modal2-content">
+                        <span class="close close-nome-responsavel">&times;</span>
+                        <h2>Alterar Nome do Responsável</h2>
+                        <form id="form-nome-responsavel" class="form-modal">
+                            <label for="novo-nome-responsavel">Novo Nome:</label>
+                            <input type="text" id="novo-nome-responsavel" name="novo-nome-responsavel"
+                                class="input-modal">
+                            <button type="submit" class="btn-submit-modal">Salvar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal para Alterar Nome do Filho -->
+                <div id="modal2-nome-filho" class="modal2 modal2-nome-filho">
+                    <div class="modal2-content">
+                        <span class="close close-nome-filho">&times;</span>
+                        <h2>Alterar Nome do Filho</h2>
+                        <form id="form-nome-filho" class="form-modal">
+                            <label for="novo-nome-filho">Novo Nome:</label>
+                            <input type="text" id="novo-nome-filho" name="novo-nome-filho" class="input-modal">
+                            <button type="submit" class="btn-submit-modal">Salvar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal para Alterar Senha -->
+                <div id="modal2-senha" class="modal2 modal2-senha">
+                    <div class="modal2-content">
+                        <span class="close close-senha">&times;</span>
+                        <h2>Alterar Senha</h2>
+                        <form id="form-senha" class="form-modal">
+                            <label for="senha-atual">Senha Atual:</label>
+                            <div class="input-container">
+                                <input type="password" id="senha-atual" name="senha-atual" class="input-modal">
+                                <button type="button" class="eye-icon"
+                                    onclick="togglePasswordVisibility('senha-atual')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+
+                            <label for="nova-senha">Nova Senha:</label>
+                            <div class="input-container">
+                                <input type="password" id="nova-senha" name="nova-senha" class="input-modal">
+                                <button type="button" class="eye-icon" onclick="togglePasswordVisibility('nova-senha')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+
+                            <label for="confirmar-senha">Confirmar Nova Senha:</label>
+                            <div class="input-container">
+                                <input type="password" id="confirmar-senha" name="confirmar-senha" class="input-modal">
+                                <button type="button" class="eye-icon"
+                                    onclick="togglePasswordVisibility('confirmar-senha')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+
+                            <button type="submit" class="btn-submit-modal">Salvar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/app.js"></script>
+    <script src="../js/aba-familia.js"></script>
+    <script src="../js/sites-bloqueados.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/historico-sites.js"></script>
+    <script src="../js/gerenciar-app.js"></script>
+    <script src="../js/configuracoes.js"></script>
+</body>
+
+</html>
